@@ -3,6 +3,7 @@
 # Overview:  
   Input: 3D reconstructed image files (tif and tiff are supported)
   Output: Two sets of 2D tif files, the maximum value for each xy column and the first z-slice for which that value was found.  Upon starting the process, a popup will prompt the user to select between saving the output as individual time slice tif files or one hyperstack tif.  
+    
   ![](Readme_Help_Images/Main_Popup_Appearence.PNG?raw=true "Main Window Appearence")
 
 
@@ -13,6 +14,7 @@
     
   Numpy (64-bit) - Can be downloaded from https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy, select the version which matches what you python version is installed (for example, python3.7 would download "numpy‑1.20.1+mkl‑cp37‑cp37m‑win_amd64.whl").  Next open cmd.exe and run "pip install pip --upgrade" to ensure that you are using the most recent version of pip.  Navigate to the directory (using 'cd [path_to_file]') where the numpy whl file was downloaded to and run 'pip install "numpy‑1.20.1+mkl‑cp37‑cp37m‑win_amd64.whl" ' (in the case of python3.7).  
   ![](Readme_Help_Images/Install_64bit_Numpy.PNG?raw=true "Edit Preset Entries")  
+    
   To verify, type python in cmd.exe and run "import numpy.distutils.sytem_info as sysinfo", "sysinfo.platform_bits" and ensure the printout is "64".  
   ![](Readme_Help_Images/Verify_64bit_Numpy.PNG?raw=true "Edit Preset Entries")
     
@@ -23,14 +25,17 @@
   Open cmd.exe and navigate to where ClownBarf_Z_Projection_Finder.py is located, run 'python ClownBarf_Z_Projection_Finder.py'.  A popup should appear with 4 entry spots; an input directory, output directory, projection filename, and location filename.  Proper formating of the input reconstruction files is important.  The folder selected for the input directory should only contain folders that are named with numbers only (example, "0.000" or "2"), and the tif (or tiff) files inside each should also be numbers only.  
     
   Below are the expected print outputs in the command line for a given output format.  
-    Hyperstack file:  
+    
+  Hyperstack file:  
   ![](Readme_Help_Images/Readout_Hyperstack_File_Format.PNG?raw=true "Expected Hyperstack File Output")  
-    Individual files:  
+    
+  Individual files:  
   ![](Readme_Help_Images/Readout_Individual_File_Format.PNG?raw=true "Expected Individual Files Output")  
   
 # Troubleshooting:  
   All entries come prefilled with '(Required)', none of them can remain as such for the program to run.  Below are most of the errors that will appear should an entry be filled incorrectly.  
   ![](Readme_Help_Images/Main_Popup_Error_Format.PNG?raw=true "Main Window Error Appearences")  
+    
   The entries can be preset by editing the script text, instructions can be seen in the image below taken from the script.  
   ![Preset_Image](Readme_Help_Images/Pre_Set_Entries.PNG?raw=true "Edit Preset Entries")
   
