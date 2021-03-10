@@ -17,10 +17,11 @@
   Python (version 3.7+) - can be downloaded from python.org, choose an AMD64 (x86-64) architecture.
     
   Numpy (64-bit) - Can be downloaded from https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy, select the version which matches what you python version is installed (for example, python3.7 would download "numpy‑1.20.1+mkl‑cp37‑cp37m‑win_amd64.whl").  Next open cmd.exe and run "pip install pip --upgrade" to ensure that you are using the most recent version of pip.  Navigate to the directory (using 'cd [path_to_file]') where the numpy whl file was downloaded to and run 'pip install "numpy‑1.20.1+mkl‑cp37‑cp37m‑win_amd64.whl" ' (in the case of python3.7).  
-  ![](Readme_Help_Images/Install_64bit_Numpy.PNG?raw=true "Edit Preset Entries")  
+  ![](Readme_Help_Images/64bit_Numpy_Download.PNG?raw=true "Download 64-Bit Numpy")  
+  ![](Readme_Help_Images/Install_64bit_Numpy.PNG?raw=true "Install 64-Bit Numpy")  
     
   To verify, type python in cmd.exe and run "import numpy.distutils.sytem_info as sysinfo", "sysinfo.platform_bits" and ensure the printout is "64".  
-  ![](Readme_Help_Images/Verify_64bit_Numpy.PNG?raw=true "Edit Preset Entries")
+  ![](Readme_Help_Images/Verify_64bit_Numpy.PNG?raw=true "Confirm 64-Bit Numpy")
     
   Skimage - install with 'pip install scikit-image'
 
