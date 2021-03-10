@@ -1,7 +1,8 @@
 # Clownbarf-Z-Projection-Tracker
 
 # Overview:  
-  Input: 3D reconstructed image files (tif and tiff are supported)
+  Input: 3D reconstructed image files (tif and tiff are supported)  
+    
   Output: Two sets of 2D tif files, the maximum value for each xy column and the first z-slice for which that value was found.  Upon starting the process, a popup will prompt the user to select between saving the output as individual time slice tif files or one hyperstack tif.  
     
   Main Popup Window:  
