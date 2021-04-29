@@ -45,7 +45,7 @@ def Error_Checking():
         
         If all of these checks pass, then the Error_Count will return a 0.
     '''
-    Errors_Found = np.zeros(3)
+    Errors_Found = np.zeros(5)
     '''
         All error symbols are drawn to allow the program to properly remove them should the error be fixed.  Without creating them, a tkinter variable error occurs.
     '''
@@ -54,6 +54,7 @@ def Error_Checking():
     Input_Folder_Error_Canvas = canvas.create_window(Start_Processing_Horizontal.get(),Input_Spacing_Error.get(),window=Input_Folder_Error)
     Input_Subfolder_Error_Canvas = canvas.create_window(Start_Processing_Horizontal.get(),Input_Spacing_Error.get(),window=Input_Subfolder_Error)
     Input_Reconstruction_Files_Error_Canvas = canvas.create_window(Start_Processing_Horizontal.get(),Input_Spacing_Error.get(),window=Input_Reconstruction_Files_Error)
+    Size_Dropdown_Error_Canvas = canvas.create_window(Error_Symbol_Horizontal.get(),Size_Spacing.get(),window=Size_Dropdown_Error)
     
     
     '''
@@ -123,6 +124,13 @@ def Error_Checking():
     if Input_Folder_Error_Check.get() == 0 and Input_Subfolder_Error_Check.get() == 0 and Input_Reconstruction_Files_Error_Check.get() == 0:
         canvas.delete(Input_Error_Label_Canvas)
     
+    if Size_Dropdown_Selection.get() == 'Select One':
+        Errors_Found[3] = 1
+    if Size_Dropdown_Selection.get() != 'Select One':
+        canvas.delete(Size_Dropdown_Error_Canvas)
+        Errors_Found[3] = 0
+    
+    
     
     '''
         Count the number of errors
@@ -160,6 +168,7 @@ def Z_Projection():
     Shape_Finding = io.imread(Reconstruction_Files[0][0])
     Z_Proj_Value = np.zeros((Reconstruction_Files.shape[1],Shape_Finding.shape[0],Shape_Finding.shape[1]),'<f4')
     Z_Proj_Loc = np.zeros((Reconstruction_Files.shape[1],Shape_Finding.shape[0],Shape_Finding.shape[1]),'<f4')
+    
     for time_point in range(Reconstruction_Files.shape[1]):
         Reconstruction_Built = np.zeros((Reconstruction_Files.shape[0],Shape_Finding.shape[0],Shape_Finding.shape[1]),'<f4')
 
@@ -195,7 +204,10 @@ def Z_Projection():
                     #Appends the Z Location information from the tif file into the list for each particle found
                     X_Location = int(data['Particles_Position'][Time_Spots][0])
                     Y_Location = int(data['Particles_Position'][Time_Spots][1])
-                    Z_Location = int(Z_Proj_Loc[Time_Spots,Y_Location,X_Location])
+                    if Size_Dropdown_Selection.get() == '1024x1024':
+                        Z_Location = int(Z_Proj_Loc[Time_Spots,2*Y_Location,2*X_Location])
+                    if Size_Dropdown_Selection.get() == '2048x2048':
+                        Z_Location = int(Z_Proj_Loc[Time_Spots,Y_Location,X_Location])
                     data['Particles_Position'][Time_Spots].append(Z_Location)
 
             if Saving:
@@ -291,6 +303,10 @@ if __name__ == '__main__':
     Input_JSON_Folder_Text.set('D:/Reconstruction/Louie/tracks/')
     Input_JSON_Folder_Button = Button(GUI,text='Select Folder with JSON Tracks ONLY',command=Input_JSON_Folder,width=Button_Label_Width)
     Input_JSON_Folder_Entry = Entry(GUI,textvariable=Input_JSON_Folder_Text,width=Entry_Width)
+    Size_Dropdown_Label = Label(GUI,text='JSON Resolution')
+    Size_Dropdown_Selection = StringVar()
+    Size_Dropdown_Selection.set('Select One')
+    Size_Dropdown_Menu = OptionMenu(GUI,Size_Dropdown_Selection,'Select One','1024x1024','2048x2048')
 
     '''
         Error messages/symbols
@@ -307,11 +323,12 @@ if __name__ == '__main__':
     Input_Reconstruction_Files_Error = Label(GUI,text='Reconstruction Directory Contains Invalid Holograms')
     Output_Directory_Folder_Error = Label(GUI,text='Output Is Not a Valid Directory')
     Testing_Check = IntVar()
+    Size_Dropdown_Error = Label(GUI,text='*')
 
     '''
         The placement of each component in the vertical direction is determined by a spacing of 28 units, each next set is given a value of 28 units below the previous one.  This allows for a smooth increase should sections need to be added or removed.
     '''
-    Intro_Spacing,Overal_Error_Spacing,Input_Spacing,Input_Spacing_Error,Output_Spacing,Z_Value_Spacing,Z_Loc_Spacing,Start_Process_Spacing,Label_Button_Horizontal,Entry_Horizontal,Start_Processing_Horizontal,Error_Symbol_Horizontal,gap,Z_Value_Error_Spacing,Z_Loc_Error_Spacing,Input_Output_Error_Horizontal,Output_Filenames_Horizontal,Stack_vs_Hyperstack_Spacing,Input_Stack_Horizontal,Input_Hyperstack_Horizontal,Output_Min_Max_Spacing,Max_Format_Horizontal,Min_Format_Horizontal,Input_JSON_Spacing = IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar()
+    Intro_Spacing,Overal_Error_Spacing,Input_Spacing,Input_Spacing_Error,Output_Spacing,Z_Value_Spacing,Z_Loc_Spacing,Start_Process_Spacing,Label_Button_Horizontal,Entry_Horizontal,Start_Processing_Horizontal,Error_Symbol_Horizontal,gap,Z_Value_Error_Spacing,Z_Loc_Error_Spacing,Input_Output_Error_Horizontal,Output_Filenames_Horizontal,Stack_vs_Hyperstack_Spacing,Input_Stack_Horizontal,Input_Hyperstack_Horizontal,Output_Min_Max_Spacing,Max_Format_Horizontal,Min_Format_Horizontal,Input_JSON_Spacing,Size_Spacing = IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar(),IntVar()
     
     gap.set(28)
     
@@ -321,7 +338,8 @@ if __name__ == '__main__':
     Input_Spacing_Error.set((Input_Spacing.get()/gap.get()+1)*gap.get())
     Input_JSON_Spacing.set((Input_Spacing_Error.get()/gap.get()+1)*gap.get())
     Output_Min_Max_Spacing.set((Input_JSON_Spacing.get()/gap.get()+1)*gap.get())
-    Start_Process_Spacing.set((Output_Min_Max_Spacing.get()/gap.get()+1)*gap.get())
+    Size_Spacing.set((Output_Min_Max_Spacing.get()/gap.get()+1)*gap.get())
+    Start_Process_Spacing.set((Size_Spacing.get()/gap.get()+1)*gap.get())
     
     if platform.system() == 'Windows':
         Label_Button_Horizontal.set(150)
@@ -355,6 +373,8 @@ if __name__ == '__main__':
     Output_Max_Format_Cancas = canvas.create_window(Min_Format_Horizontal.get(),Output_Min_Max_Spacing.get(),window=Output_Max_Format_Checkbox)
     Input_JSON_Folder_Button_Canvas = canvas.create_window(Label_Button_Horizontal.get(),Input_JSON_Spacing.get(),window=Input_JSON_Folder_Button)
     Input_JSON_Folder_Entry_Canvas = canvas.create_window(Entry_Horizontal.get(),Input_JSON_Spacing.get(),window=Input_JSON_Folder_Entry)
+    Size_Dropdown_Label_Canvas = canvas.create_window(Label_Button_Horizontal.get(),Size_Spacing.get(),window=Size_Dropdown_Label)
+    Size_Dropdown_Menu_Canvas = canvas.create_window(Max_Format_Horizontal.get(),Size_Spacing.get(),window=Size_Dropdown_Menu)
     Start_Processing_Button_Canvas = canvas.create_window(Start_Processing_Horizontal.get(),Start_Process_Spacing.get(),window=Start_Processing_Button)
     
     
