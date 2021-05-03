@@ -1,4 +1,4 @@
-# Clownbarf-Z-Projection-Tracker
+# Z-Projection-Tracker
 
 # Overview:  
   Input: 3D reconstructed image files (tif and tiff are supported)  
