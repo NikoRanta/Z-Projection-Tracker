@@ -54,4 +54,4 @@
   "Reconstruction Directory Contains Invalid Files" - One or more files are present that are not a normal formatted file (format other than filename.extension).  
   "Reconstruction Directory Contains No Files" - No files found in the subfolders.  
   "Reconstruction Directory Contains Invalid File Names" - A file contains a non-numeric character, only numbers are allowed.  
-  "Reconstruction Directory Contains Invalid File Types" - A non-tif or tiff file exists in the subfolders, only tif or tiff are allowed.
+  "Reconstruction Directory Contains Invalid File Types" - A non-tif or tiff file exists in the subfolders, only tif or tiff are allowed. 
