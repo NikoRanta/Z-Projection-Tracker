@@ -5,10 +5,7 @@
     
   Output: Two sets of 2D tif files, the maximum value for each xy column and the first z-slice for which that value was found.  Upon starting the process, a popup will prompt the user to select between saving the output as individual time slice tif files or one hyperstack tif.  
     
-  Main Popup Window:  
-  <!--START_SECTION:update_image-->  
-  ![](Readme_Help_Images/Main_Popup_Appearence.PNG?raw=true "Main Window Appearence")
-  <!--END_SECTION:update_image-->  
+  Main Popup Window:   
     
   Output Format Prompt:  
   ![](Readme_Help_Images/Output_Format_Selection_Popup.PNG?raw=true "Specify Output Format Popup")
