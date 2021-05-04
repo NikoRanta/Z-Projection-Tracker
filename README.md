@@ -8,7 +8,7 @@
   Main Popup Window:   
     ![](Readme_Help_Images/Main_Popup_Appearence.PNG?raw=true "Main Window Appearence")  
   Dropdown shown:  
-     
+     ![](Readme_Help_Images/Main_Popup_Appearance_Dropdown.PNG?raw=true "Dropdown Menu")  
   Selection shown:  
     ![](Readme_Help_Images/Main_Popup_Appearence_With_Selection.PNG?raw=true "Selection Made")  
   Output Format Prompt:  
