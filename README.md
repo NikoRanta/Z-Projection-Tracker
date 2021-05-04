@@ -8,11 +8,11 @@
   Main Popup Window:   
     ![](Readme_Help_Images/Main_Popup_Appearence.PNG?raw=true "Main Window Appearence")  
   Dropdown shown:  
-    ![](Readme_Help_Images/Main_Popup_Appearence_Dropdown.PNG?raw=true "Dropdown Menu")  
-  Selection shown:
+     
+  Selection shown:  
     ![](Readme_Help_Images/Main_Popup_Appearence_With_Selection.PNG?raw=true "Selection Made")  
   Output Format Prompt:  
-  ![](Readme_Help_Images/Output_Format_Selection_Popup.PNG?raw=true "Specify Output Format Popup")
+    ![](Readme_Help_Images/Output_Format_Selection_Popup.PNG?raw=true "Specify Output Format Popup")
 
 
 # Requirements:  
@@ -46,7 +46,7 @@
   
 # Troubleshooting:  
   All entries come prefilled with '(Required)', none of them can remain as such for the program to run.  Below are most of the errors that will appear should an entry be filled incorrectly.  
-  
+  ![](Readme_Help_Images/Main_Popup_Error_Format.PNG?raw=true "Main Window Error Appearences")  
     
   The entries can be preset by editing the script text, instructions can be seen in the image below taken from the script.  
   ![](Readme_Help_Images/Pre_Set_Entries.PNG?raw=true "Edit Preset Entries")
